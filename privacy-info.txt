@@ -1,0 +1,1 @@
+TimeFit stores meeting titles, display names, availability, and user-selected meeting locations to provide scheduling and place recommendations. Data storage uses Supabase, and map features use Kakao Maps. Contact: info@lavalabs.co.kr
