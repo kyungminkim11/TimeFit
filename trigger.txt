@@ -1,1 +1,1 @@
-Trigger deployment 2026-06-28.
+Trigger deployment after enabling public GitHub Pages on 2026-06-28.
