@@ -3,6 +3,8 @@ name: Bootstrap TimeFit source
 on:
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -10,19 +12,14 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "timefit-bootstrap"
-  cancel-in-progress: false
-
 jobs:
   bootstrap:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout repository
+      - name: Checkout source branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Extract TimeFit source
         run: |
@@ -39,16 +36,19 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "Deploy TimeFit prototype source" || true
-          git push
+          git push origin HEAD:${{ github.event.pull_request.head.ref || github.ref_name }}
 
       - name: Configure GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/configure-pages@v5
 
       - name: Upload Pages artifact
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
       - name: Deploy GitHub Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         id: deployment
         uses: actions/deploy-pages@v4
