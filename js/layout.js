@@ -1,0 +1,6 @@
+import{qs}from'./dom.js';
+export function header(){const n=qs('#site-header');if(n)n.innerHTML='<div class="site-header"><nav class="container nav"><a class="brand" href="index.html"><span class="brand-mark">T</span>TimeFit</a><div class="nav-links"><a href="index.html#how">이용 방법</a><a class="button button-primary button-small keep-mobile" href="index.html#create">새 모임</a></div></nav></div>'}
+export function footer(){const n=qs('#site-footer');if(n)n.innerHTML='<footer class="footer"><div class="container footer-inner"><div>© 2026 Lava Labs · TimeFit</div><div class="footer-links"><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a></div></div></footer>'}
+export function toast(message){let n=qs('#toast');if(!n){n=document.createElement('div');n.id='toast';n.className='toast';document.body.appendChild(n)}n.textContent=message;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2200)}
+export async function copy(text){await navigator.clipboard.writeText(text);toast('링크를 복사했습니다.')}
+export function loading(button,on,text='처리 중...'){if(on){button.dataset.label=button.textContent;button.disabled=true;button.textContent=text}else{button.disabled=false;button.textContent=button.dataset.label||button.textContent}}
