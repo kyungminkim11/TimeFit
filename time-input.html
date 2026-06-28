@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간 입력 - TimeFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/time-input.css">
+</head>
+<body>
+    <div id="app">
+        <div id="header"></div>
+        <main>
+            <div class="time-input-container">
+                <h1>약속 시간 조율</h1>
+                <p class="description">참여자들의 가능한 시간을 입력해 주세요. 최소 2명부터 시작할 수 있습니다.</p>
+                <div id="participantsList"></div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="addParticipant">참여자 추가</button>
+                    <button type="button" class="btn-primary" id="findTime">시간 찾기</button>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <template id="participantFormTemplate">
+        <div class="participant-form">
+            <div class="participant-header"><h3>참여자 <span class="participant-number"></span></h3><button type="button" class="remove-participant">삭제</button></div>
+            <div class="form-group"><label>이름</label><input type="text" name="name" placeholder="이름을 입력하세요"></div>
+            <div class="time-slots"><h4>가능한 시간대</h4><div class="time-slot-list"></div><button type="button" class="btn-secondary add-time-slot">시간대 추가</button></div>
+        </div>
+    </template>
+    <template id="timeSlotTemplate">
+        <div class="time-slot-item">
+            <div class="time-slot-header"><h5>시간대 <span class="time-slot-number"></span></h5><button type="button" class="remove-time-slot">삭제</button></div>
+            <div class="time-slot-content">
+                <div class="form-group"><label>날짜</label><input type="date" name="date" required></div>
+                <div class="time-range"><div class="form-group"><label>시작 시간</label><input type="time" name="startTime" required></div><div class="form-group"><label>종료 시간</label><input type="time" name="endTime" required></div></div>
+            </div>
+        </div>
+    </template>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/time-input.js"></script>
+</body>
+</html>

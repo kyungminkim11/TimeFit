@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기 | TimeFit</title>
+    <meta name="description" content="TimeFit 서비스 문의를 남겨 주세요.">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header id="header"></header>
+
+    <main class="contact-page">
+        <section class="contact-hero">
+            <div class="container">
+                <span class="eyebrow">CONTACT</span>
+                <h1>문의하기</h1>
+                <p>서비스 이용 중 궁금한 점이나 개선 의견을 남겨 주세요.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+            <div class="container contact-layout">
+                <aside class="contact-info">
+                    <h2>연락처</h2>
+                    <p>아래 양식으로 문의를 보내면 확인 후 회신드리겠습니다.</p>
+                    <dl>
+                        <div><dt>운영사</dt><dd>라바랩스</dd></div>
+                        <div><dt>서비스</dt><dd>TimeFit</dd></div>
+                    </dl>
+                </aside>
+
+                <form class="contact-form" id="contact-form">
+                    <label>이름<input type="text" name="name" required></label>
+                    <label>이메일<input type="email" name="email" required></label>
+                    <label>문의 유형<select name="category"><option>서비스 이용</option><option>오류 신고</option><option>제휴 문의</option><option>기타</option></select></label>
+                    <label>문의 내용<textarea name="message" rows="8" required></textarea></label>
+                    <button class="button button-primary" type="submit">문의 내용 확인</button>
+                    <p class="form-message" id="form-message" role="status"></p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer"></footer>
+    <script src="js/components.js"></script>
+    <script src="js/contact.js"></script>
+</body>
+</html>

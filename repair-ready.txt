@@ -1,1 +1,0 @@
-Verified archive chunks are ready for Git data upload.

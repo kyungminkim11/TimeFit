@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지도 시각화 - TimeFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/map.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9dd3396dc9afd1f1fe1b0cc2bbc42096&libraries=services"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="header"></div>
+        
+        <main>
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-controls">
+                    <button id="viewResult" class="btn-primary">결과 보기</button>
+                    <button onclick="location.href='place-input.html'" class="btn-secondary">위치 다시 입력</button>
+                </div>
+            </div>
+
+            <div class="location-summary">
+                <h3>위치 정보 요약</h3>
+                <div class="summary-content">
+                    <p>참여자 수: <span id="participantCount">0</span>명</p>
+                    <p>중간 지점: <span id="middlePoint">-</span></p>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/map.js"></script>
+</body>
+</html> 

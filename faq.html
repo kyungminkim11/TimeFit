@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자주 묻는 질문 - TimeFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/faq.css">
+</head>
+<body>
+    <div id="app">
+        <div id="header"></div>
+        
+        <main>
+            <div class="faq-container">
+                <h1>자주 묻는 질문</h1>
+                <p class="faq-intro">TimeFit에 대해 자주 묻는 질문과 답변을 확인하세요.<br>궁금한 점이 있다면 언제든 문의해 주세요!</p>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>TimeFit은 어떤 서비스인가요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>TimeFit은 여러 사람의 일정을 조율하여 최적의 약속 시간과 장소를 찾아주는 서비스입니다. 사용자들의 가능한 시간을 입력받아 가장 적합한 시간대를 추천하고, 선택된 시간대에 맞는 장소도 추천해드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>장소 추천은 어떻게 이루어지나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>선택된 시간대와 참여자들의 위치를 기반으로, 교통이 편리하고 모든 참여자들이 만나기 좋은 장소를 자동으로 추천해드립니다. 카카오맵 API를 활용하여 실시간으로 최적의 장소를 찾아드립니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>개인정보는 어떻게 보호되나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>TimeFit은 사용자의 개인정보를 철저히 보호합니다. 수집된 정보는 서비스 제공 목적으로만 사용되며, 제3자에게 제공되지 않습니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 참고해주세요.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>문제가 발생했을 때 어떻게 문의하나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>문의사항이 있으시면 하단의 '문의하기' 버튼을 통해 이메일(<a href="mailto:info@lavalabs.co.kr">info@lavalabs.co.kr</a>)로 문의해주시거나, 고객센터(010-7914-3970)로 연락주시면 됩니다. 평일 오전 9시부터 오후 6시까지 상담이 가능합니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>회원가입 없이도 사용할 수 있나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>네, TimeFit은 회원가입 없이도 약속 생성 및 참여가 가능합니다. 단, 일부 기능(예: 내 모임 관리 등)은 회원가입 후 이용하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>모임 링크는 어떻게 공유하나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>약속을 생성하면 고유한 링크가 발급됩니다. 해당 링크를 복사하여 카카오톡, 문자, 이메일 등 원하는 방법으로 참여자에게 전달하시면 됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>입력한 정보는 안전하게 보관되나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>TimeFit은 최신 보안 기술을 적용하여 사용자의 정보를 안전하게 보호합니다. 입력하신 정보는 약속 조율 목적 외에는 사용되지 않으며, 개인정보처리방침에 따라 안전하게 관리됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>약속 시간/장소를 변경하고 싶을 때는 어떻게 하나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>약속 생성자가 새로운 시간이나 장소를 입력하면, 참여자들에게 변경된 내용이 안내됩니다. 기존 링크를 통해 다시 참여할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>참여자 수에 제한이 있나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>참여자 수에는 별도의 제한이 없습니다. 다만, 너무 많은 인원이 동시에 입력할 경우 일부 기능의 속도가 느려질 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>모바일에서도 모든 기능을 사용할 수 있나요?</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="faq-answer">
+                            <p>네, TimeFit은 모바일 환경에서도 PC와 동일하게 모든 기능을 지원합니다. 스마트폰, 태블릿 등 다양한 기기에서 편리하게 이용하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-contact">
+                    <a href="contact.html" class="btn-primary">문의하기</a>
+                </div>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/faq.js"></script>
+</body>
+</html> 

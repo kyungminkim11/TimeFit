@@ -1,0 +1,636 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<header class="site-header">
+    <div class="header-content">
+        <a href="index.html" class="logo">
+            <h1>TimeFit</h1>
+        </a>
+        <button class="mobile-menu-toggle" aria-label="메뉴 열기">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">홈</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">서비스 이용 <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="time-input.html" class="dropdown-item">
+                            <i class="fas fa-clock"></i>
+                            <span>시간 조율하기</span>
+                        </a>
+                        <a href="place-input.html" class="dropdown-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>장소 정하기</span>
+                        </a>
+                        <a href="#" class="dropdown-item" id="group-create-link">
+                            <i class="fas fa-users"></i>
+                            <span>새 모임 만들기</span>
+                        </a>
+                    </div>
+                </li>
+                <li><a href="company.html">회사소개</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">문의하기</a></li>
+            </ul>
+        </nav>
+    </div>
+    <style>
+        .site-header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            height: 72px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .main-nav {
+            height: 100%;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .main-nav li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0 1rem;
+            font-weight: 500;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 3px 3px 0 0;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* 드롭다운 메뉴 스타일 */
+        .dropdown {
+            position: relative;
+            height: 100%;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding-right: 1.5rem !important;
+        }
+
+        .dropdown-toggle i {
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            position: absolute;
+            right: 0.5rem;
+        }
+
+        /* 데스크톱에서만 hover 효과 적용 */
+        @media (min-width: 769px) {
+            .dropdown:hover .dropdown-toggle i {
+                transform: rotate(180deg);
+            }
+
+            .dropdown:hover .dropdown-menu {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 24px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            min-width: 220px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            padding: 0.8rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1.2rem;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(80, 227, 194, 0.1) 100%);
+            color: var(--primary-color);
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1rem;
+        }
+
+        .dropdown-item span {
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .site-header {
+                height: 100px;
+            }
+
+            .header-content {
+                padding: 0 1.2rem;
+            }
+
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 0.8rem;
+                margin-left: auto;
+            }
+
+            .mobile-menu-toggle span {
+                display: block;
+                width: 26px;
+                height: 2px;
+                background-color: var(--text-color);
+                margin: 6px 0;
+                transition: all 0.3s ease;
+            }
+
+            .main-nav {
+                position: fixed;
+                top: 100px;
+                right: -100%;
+                width: 100%;
+                max-width: 100%;
+                height: calc(100vh - 100px);
+                background-color: white;
+                padding: 1.5rem;
+                transition: right 0.3s ease;
+                box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+                overflow-y: auto;
+            }
+
+            .main-nav.active {
+                right: 0;
+            }
+
+            .main-nav ul {
+                flex-direction: column;
+                align-items: stretch;
+                height: auto;
+                gap: 0.8rem;
+            }
+
+            .main-nav li {
+                height: auto;
+                width: 100%;
+            }
+
+            .main-nav a {
+                padding: 1rem 1.5rem;
+                height: auto;
+                background-color: #f8f9fa;
+                border-radius: 12px;
+            }
+
+            .dropdown-toggle {
+                padding-right: 2.5rem !important;
+            }
+
+            .dropdown-toggle i {
+                right: 1.5rem;
+                font-size: 1.2rem;
+            }
+
+            .dropdown.active .dropdown-toggle i {
+                transform: rotate(180deg);
+            }
+
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                left: 0;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                width: 100%;
+                display: none;
+                padding: 0;
+                margin-top: 0.5rem;
+            }
+
+            .dropdown.active .dropdown-menu {
+                display: flex;
+            }
+
+            .dropdown-item {
+                padding: 1rem 1.5rem;
+                background-color: white;
+                border: 1px solid #edf2f7;
+                margin: 0.2rem 0;
+            }
+        }
+
+        /* 메인 섹션 공통 스타일 */
+        .section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 0 20px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* 특별한 기능 섹션 */
+        .features {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f8ff 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(80, 227, 194, 0.1) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 시작하기 섹션 */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .cta p {
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        /* FAQ 섹션 */
+        .faq {
+            background: #fafafa;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            color: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            color: #666;
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .section-title p {
+                font-size: 1.1rem;
+            }
+
+            .cta h2 {
+                font-size: 2.4rem;
+            }
+
+            .cta p {
+                font-size: 1.2rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .section-title p {
+                font-size: 1rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .cta p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</header>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 모바일 메뉴 관련 요소들
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    // 모바일 메뉴 토글
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            mainNav.classList.toggle('active');
+        });
+    }
+
+    // 드롭다운 메뉴 토글 (모바일에서만)
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropdown.classList.toggle('active');
+            }
+        });
+
+        // 드롭다운 메뉴 아이템 클릭 시 이벤트 전파 중단
+        const dropdownItems = document.querySelectorAll('.dropdown-item');
+        dropdownItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.stopPropagation();
+                }
+            });
+        });
+    }
+
+    // '새 모임 만들기' 클릭 시 안내
+    const groupCreateLink = document.getElementById('group-create-link');
+    if (groupCreateLink) {
+        groupCreateLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('아직 서비스 개발 전입니다.');
+        });
+    }
+
+    // 모바일 메뉴 외부 클릭 시 닫기
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            const isClickInside = mainNav.contains(e.target) || mobileMenuToggle.contains(e.target);
+            if (!isClickInside) {
+                mainNav.classList.remove('active');
+            }
+        }
+    });
+
+    // 화면 크기 변경 시 모바일 메뉴 초기화
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+            mainNav.classList.remove('active');
+            dropdown.classList.remove('active');
+        }
+    });
+});
+</script> 

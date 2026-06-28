@@ -1,0 +1,432 @@
+/* 위치 입력 메인 컨테이너 */
+.place-input-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+}
+
+.place-input-container h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    margin-bottom: 1.2rem;
+    letter-spacing: -0.5px;
+}
+
+.place-input-desc {
+    text-align: center;
+    color: #555;
+    margin-bottom: 2.5rem;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+.map-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.12);
+    padding: 1.8rem 1.5rem 1.5rem 1.5rem;
+    margin-bottom: 2.5rem;
+    transition: transform 0.2s ease;
+}
+
+.map-card:hover {
+    transform: translateY(-2px);
+}
+
+.map-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    min-height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.map-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.map-controls button {
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.map-controls .btn-primary {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+}
+
+.map-controls .btn-primary:hover {
+    background: var(--primary-color);
+    transform: translateY(-1px);
+}
+
+.map-controls .btn-secondary {
+    background: #f0f4f8;
+    color: #444;
+    border: 1px solid #e0e4e8;
+}
+
+.map-controls .btn-secondary:hover {
+    background: #e8ecf0;
+    transform: translateY(-1px);
+}
+
+.location-info-card {
+    background: #f8fbff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(74, 144, 226, 0.08);
+    padding: 2rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.location-info-card h2 {
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+#addressInput {
+    padding: 0.9rem 1.2rem;
+    border: 2px solid #e0e4e8;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+#addressInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+    outline: none;
+}
+
+#addressAddBtn, #currentLocationBtn {
+    padding: 0.9rem 1.2rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+#locationList {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+
+#locationList li {
+    background: white;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+#locationList li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#recommendBtn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    background: var(--primary-color);
+    color: #4a90e2;
+    border: none;
+    transition: all 0.2s ease;
+    margin-top: 1rem;
+}
+
+#recommendBtn:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+}
+
+#recommendResult {
+    margin-top: 1.5rem;
+    padding: 1.2rem;
+    background: #f0f4f8;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.region-selector {
+    margin-bottom: 1.5rem;
+}
+
+.region-step {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.region-view-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+}
+
+.region-view-controls button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+}
+
+.region-view-controls button:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.address-input-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.address-input-group input {
+    flex: 1;
+}
+
+.location-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.location-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.location-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.location-list::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.location-list::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+.recommend-result {
+    margin-top: 1.2rem;
+    font-weight: 600;
+    padding: 1.2rem;
+    background: #f0f4f8;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .place-input-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .map-container {
+        height: 45vh;
+        min-height: 280px;
+    }
+    
+    .map-card {
+        padding: 1.2rem 1rem 1rem 1rem;
+    }
+    
+    .location-info-card {
+        padding: 1.5rem 1.2rem;
+    }
+    
+    .place-input-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    .map-controls {
+        flex-direction: column;
+    }
+    
+    .map-controls button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        height: 50vh;
+    }
+    
+    .location-info-card {
+        padding: 1.2rem 1rem;
+    }
+    
+    #addressInput, #addressAddBtn, #currentLocationBtn {
+        font-size: 0.95rem;
+        padding: 0.8rem 1rem;
+    }
+}
+
+/* 버튼 공통 스타일 */
+.btn-primary, .btn-secondary, .region-step1-btn, .region-step2-btn, .region-step3-btn {
+    padding: 0.9rem 1.5rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 1rem;
+    letter-spacing: -0.3px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.25);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+}
+
+.btn-secondary {
+    background: #ffffff;
+    color: #444;
+    border: 1px solid #e0e4e8;
+}
+
+.btn-secondary:hover {
+    background: #f8fbff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #d0d4d8;
+}
+
+/* 지역 선택 버튼 스타일 */
+.region-step1-btn, .region-step2-btn, .region-step3-btn {
+    background: #ffffff;
+    color: #444;
+    border: 1px solid #e0e4e8;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.region-step1-btn:hover, .region-step2-btn:hover, .region-step3-btn:hover {
+    background: #f8fbff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* 주소 입력 관련 버튼 */
+#addressAddBtn, #currentLocationBtn {
+    padding: 0.9rem 1.2rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    background: #ffffff;
+    color: #444;
+    border: 1px solid #e0e4e8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+#addressAddBtn:hover, #currentLocationBtn:hover {
+    background: #f8fbff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* 추천 버튼 스타일 */
+#recommendBtn {
+    width: 100%;
+    padding: 1.1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+    color: white;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 1.2rem;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+}
+
+#recommendBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(74, 144, 226, 0.3);
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-color));
+}
+
+#recommendBtn {
+    color: #4a90e2 !important;
+}
+
+/* 위치 리스트 삭제 버튼 */
+#locationList li button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 8px;
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(255, 77, 79, 0.2);
+}
+
+#locationList li button:hover {
+    background: #ff6b6b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 77, 79, 0.3);
+} 

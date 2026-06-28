@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과 - TimeFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/result.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9dd3396dc9afd1f1fe1b0cc2bbc42096&libraries=services"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="header"></div>
+        
+        <main>
+            <div class="result-container">
+                <section class="time-result" id="timeResult">
+                    <h2>추천 시간</h2>
+                    <div class="time-slots">
+                        <!-- 시간대가 여기에 동적으로 추가됩니다 -->
+                    </div>
+
+                    <div class="participant-times">
+                        <h3>참여자별 가능 시간</h3>
+                        <div class="participant-list">
+                            <!-- 참여자별 시간이 여기에 동적으로 추가됩니다 -->
+                        </div>
+                    </div>
+                </section>
+
+                <section class="place-result" id="placeResult">
+                    <h2>추천 장소</h2>
+                    <div id="map"></div>
+                    <div class="place-info">
+                        <p>중간 지점: <span id="middlePoint">-</span></p>
+                        <p>참여자 수: <span id="participantCount">0</span>명</p>
+                    </div>
+                </section>
+            </div>
+
+            <div class="action-buttons">
+                <button onclick="location.href='index.html'" class="btn-primary">새 모임 만들기</button>
+                <button id="shareButton" class="btn-secondary">공유하기</button>
+                <button id="editButton" class="btn-secondary">수정하기</button>
+            </div>
+        </main>
+
+        <div id="footer"></div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html> 

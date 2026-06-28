@@ -1,0 +1,125 @@
+<footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-section footer-brand">
+            <a href="index.html" class="footer-logo">TimeFit</a>
+            <p class="footer-copy">&copy; 2025 LAVA LABS. All rights reserved.</p>
+        </div>
+        <div class="footer-section footer-links">
+            <h4>바로가기</h4>
+            <ul>
+                <li><a href="terms.html">이용약관</a></li>
+                <li><a href="privacy.html">개인정보처리방침</a></li>
+                <li><a href="sitemap.html">사이트맵</a></li>
+            </ul>
+        </div>
+        <div class="footer-section footer-info">
+            <h4>Contact</h4>
+            <ul>
+                <li><i class="fas fa-globe"></i> <a href="https://lavalabs.co.kr" target="_blank">lavalabs.co.kr</a></li>
+                <li><i class="fas fa-phone"></i> <a href="tel:010-7914-3970">010-7914-3970</a></li>
+                <li><i class="fas fa-envelope"></i> <a href="mailto:info@lavalabs.co.kr">info@lavalabs.co.kr</a></li>
+                <li><i class="fas fa-map-marker-alt"></i> 경기도 고양시 일산서구 일현로 47, 2층 Lava Labs</li>
+            </ul>
+        </div>
+    </div>
+    <style>
+        .site-footer {
+            background: linear-gradient(135deg, #2b2d42 0%, #1a1b26 100%);
+            color: #ffffff;
+            padding: 3rem 0;
+            margin-top: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .site-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        }
+
+        .footer-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            color: #00ff9d;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #00ff9d;
+            transform: translateX(5px);
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            text-decoration: none;
+            margin-bottom: 1rem;
+            display: block;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+        }
+
+        .footer-copy {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer-info i {
+            width: 20px;
+            margin-right: 8px;
+            color: #00ff9d;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-info li:hover i {
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-info i {
+                margin-right: 4px;
+            }
+
+            .footer-section a:hover {
+                transform: none;
+            }
+        }
+    </style>
+</footer> 

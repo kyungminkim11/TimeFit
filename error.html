@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오류가 발생했습니다 | TimeFit</title>
+    <meta name="description" content="요청 처리 중 오류가 발생했습니다.">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/error.css">
+</head>
+<body>
+    <header id="header"></header>
+
+    <main class="error-page">
+        <section class="error-card" aria-labelledby="error-title">
+            <p class="error-code">ERROR</p>
+            <h1 id="error-title">잠시 문제가 발생했습니다.</h1>
+            <p>입력한 정보를 다시 확인하거나 처음부터 다시 시도해 주세요.</p>
+            <div class="error-actions">
+                <a class="button button-primary" href="index.html">처음으로</a>
+                <button class="button button-secondary" type="button" onclick="history.back()">이전 화면</button>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer"></footer>
+    <script src="js/components.js"></script>
+</body>
+</html>

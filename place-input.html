@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>위치 입력 - TimeFit</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/place-input.css">
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9dd3396dc9afd1f1fe1b0cc2bbc42096&libraries=services"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="header"></div>
+        <main>
+            <div class="place-input-container">
+                <h1>위치 입력</h1>
+                <p class="place-input-desc">모임에 적합한 위치를 지도에서 선택해 주세요.<br>정확한 위치를 클릭하면 상세 정보가 아래에 표시됩니다.</p>
+                <div class="region-selector">
+                    <div id="region-step1" class="region-step"></div>
+                    <div id="region-step2" class="region-step"></div>
+                    <div id="region-step3" class="region-step"></div>
+                    <div class="region-view-controls"><button id="viewSelectedRegion" class="btn-primary" style="display: none;">보기</button></div>
+                </div>
+                <div class="map-card">
+                    <div class="map-container">
+                        <div id="map"></div>
+                        <div class="map-controls">
+                            <button id="confirmLocation" class="btn-primary">위치 확인</button>
+                            <button onclick="location.href='time-input.html'" class="btn-secondary">이전으로</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-info-card">
+                    <h2>입력된 위치 리스트</h2>
+                    <div class="address-input-group">
+                        <input id="addressInput" type="text" placeholder="주소를 입력하세요">
+                        <button id="addressAddBtn" class="btn-secondary">주소 추가</button>
+                        <button id="currentLocationBtn" class="btn-secondary">내 위치 추가</button>
+                    </div>
+                    <ul id="locationList" class="location-list"></ul>
+                    <button id="recommendBtn" class="btn-primary">장소 추천</button>
+                    <div id="recommendResult" class="recommend-result"></div>
+                </div>
+            </div>
+        </main>
+        <div id="footer"></div>
+    </div>
+    <script src="js/main.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/place-input.js"></script>
+</body>
+</html>
