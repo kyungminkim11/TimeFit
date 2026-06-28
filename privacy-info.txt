@@ -1,1 +1,1 @@
-TimeFit stores meeting titles, display names, availability, and user-selected meeting locations to provide scheduling and place recommendations. Data storage uses Supabase, and map features use Kakao Maps. Contact: info@lavalabs.co.kr
+TimeFit은 일정과 장소 추천을 위해 모임 제목과 설명, 표시 이름, 가능한 시간, 사용자가 선택한 출발 위치를 저장합니다. 데이터 저장에는 Supabase를 사용하고 지도와 주소 기능에는 Kakao Maps를 사용합니다. 정확한 집 주소 대신 가까운 역이나 동네 중심을 입력하는 것을 권장합니다. 문의: info@lavalabs.co.kr
