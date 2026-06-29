@@ -1,1 +1,114 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TimeFit</title><link rel="stylesheet" href="css/v2.css"></head><body><header class="site-header"><nav class="container nav"><a class="brand" href="index.html"><span class="brand-mark">T</span>TimeFit</a></nav></header><main><section class="hero"><div class="container"><span class="eyebrow">Schedule together</span><h1>시간을 맞추고,<br><strong>만날 곳까지.</strong></h1><p>가능한 시간과 출발 위치를 한 번에 모아보세요.</p><a class="button button-primary" href="#create">모임 만들기</a></div></section><section class="section" id="create"><div class="container"><form class="form-card" action="https://jnciddblcndmthmmvqrz.functions.supabase.co/timefit-public" method="post"><input type="hidden" name="action" value="create"><div class="field"><label>모임 이름</label><input class="input" name="title" required></div><div class="field"><label>주최자 이름</label><input class="input" name="organizer" required></div><button class="button button-primary">모임 만들기</button></form></div></section></main></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="시간과 장소를 함께 조율하는 TimeFit">
+  <title>TimeFit | 시간을 맞추고, 만날 곳까지</title>
+  <link rel="stylesheet" href="css/v2.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="container nav">
+    <a class="brand" href="index.html"><span class="brand-mark">T</span>TimeFit</a>
+    <div class="nav-links">
+      <a href="#how">이용 방법</a>
+      <a class="button button-primary button-small keep-mobile" href="#create">모임 만들기</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Schedule together</span>
+        <h1>시간을 맞추고,<br><strong>만날 곳까지.</strong></h1>
+        <p>초대 링크 하나로 가능한 시간과 출발 위치를 모으고, 가장 많이 겹치는 시간과 이동 부담이 고른 장소를 확인하세요.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#create">새 모임 만들기</a>
+          <a class="button button-secondary" href="#how">이용 방법</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="mock-card">
+          <span class="eyebrow">추천 결과 예시</span>
+          <strong class="big">7월 5일 15:00–17:00</strong>
+          <span class="badge">4명 모두 가능</span>
+          <div class="score-list">
+            <div class="score-row"><span>15:00</span><div class="score-bar"><span style="width:100%"></span></div><b>4/4</b></div>
+            <div class="score-row"><span>17:00</span><div class="score-bar"><span style="width:75%"></span></div><b>3/4</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-heading">
+        <span class="eyebrow">How it works</span>
+        <h2>세 단계면 충분합니다.</h2>
+        <p>회원가입 없이 만들고, 모바일에서 바로 응답합니다.</p>
+      </div>
+      <div class="grid-3">
+        <article class="feature-card"><div class="feature-number">01</div><h3>모임 만들기</h3><p>후보 날짜와 소요 시간을 정합니다.</p></article>
+        <article class="feature-card"><div class="feature-number">02</div><h3>응답 받기</h3><p>시간과 출발 위치를 링크로 받습니다.</p></article>
+        <article class="feature-card"><div class="feature-number">03</div><h3>결과 확인</h3><p>시간 교집합과 장소 후보를 확인합니다.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="create">
+    <div class="container create-zone">
+      <div class="create-copy">
+        <span class="eyebrow">Create</span>
+        <h2>새 모임 만들기</h2>
+        <p>생성 후 관리 화면에서 링크 공유, 응답 마감, 모임 삭제를 처리할 수 있습니다.</p>
+        <div class="notice notice-info">관리 링크는 주최자만 보관하세요.</div>
+      </div>
+      <form class="form-card" action="https://jnciddblcndmthmmvqrz.functions.supabase.co/timefit-public" method="post" id="create-form">
+        <input type="hidden" name="action" value="create">
+        <div class="field"><label>모임 이름</label><input class="input" name="title" maxlength="80" required></div>
+        <div class="field"><label>주최자 이름</label><input class="input" name="organizer" maxlength="40" required></div>
+        <div class="field"><label>설명 <small>(선택)</small></label><textarea class="textarea" name="description" maxlength="500"></textarea></div>
+        <div class="field">
+          <label>후보 기간</label>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <input class="input" id="date_start" name="date_start" type="date" required>
+            <input class="input" id="date_end" name="date_end" type="date" required>
+          </div>
+        </div>
+        <div class="field">
+          <label>예상 소요 시간</label>
+          <select class="select" name="duration">
+            <option value="60">1시간</option>
+            <option value="90">1시간 30분</option>
+            <option value="120" selected>2시간</option>
+            <option value="180">3시간</option>
+          </select>
+        </div>
+        <div class="field"><label>응답 마감 <small>(선택)</small></label><input class="input" name="deadline" type="datetime-local"></div>
+        <input type="hidden" name="participant_limit" value="30">
+        <input type="hidden" name="require_location" value="true">
+        <button class="button button-primary" id="create-button">모임 만들기</button>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>© 2026 Lava Labs · TimeFit</span>
+    <div class="footer-links"><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a></div>
+  </div>
+</footer>
+<script>
+const s=document.querySelector('#date_start');
+const e=document.querySelector('#date_end');
+const d=new Date();
+const p=n=>String(n).padStart(2,'0');
+const v=x=>`${x.getFullYear()}-${p(x.getMonth()+1)}-${p(x.getDate())}`;
+s.value=v(d);
+const n=new Date(d);n.setDate(n.getDate()+14);e.value=v(n);
+</script>
+</body>
+</html>
