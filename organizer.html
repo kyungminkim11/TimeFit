@@ -19,24 +19,37 @@
     <div class="container" id="head"><div class="loading">관리 정보를 불러오는 중입니다.</div></div>
   </section>
   <section class="container layout hidden" id="body">
-    <form class="panel stack" id="form">
-      <div><span class="eyebrow">Organizer</span><h2>모임 설정</h2><p class="panel-intro">변경 사항은 즉시 참여 화면과 결과 화면에 반영됩니다.</p></div>
-      <div class="field"><label>모임 이름</label><input class="input" id="title" maxlength="80" required></div>
-      <div class="field"><label>설명</label><textarea class="textarea" id="description" maxlength="500"></textarea></div>
-      <div class="field"><label>후보 기간</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input class="input" id="date_start" type="date" required><input class="input" id="date_end" type="date" required></div></div>
-      <div class="field"><label>예상 소요 시간</label><select class="select" id="duration"><option value="60">1시간</option><option value="90">1시간 30분</option><option value="120">2시간</option><option value="180">3시간</option><option value="240">4시간</option></select></div>
-      <div class="field"><label>최대 참여 인원</label><input class="input" id="participant_limit" type="number" min="2" max="100" required></div>
-      <div class="field"><label>응답 마감</label><input class="input" id="deadline" type="datetime-local"></div>
-      <div class="field"><label>응답 상태</label><select class="select" id="status"><option value="open">응답 받는 중</option><option value="closed">응답 마감</option></select></div>
-      <button class="button button-primary" id="save">변경 사항 저장</button>
-      <div class="notice notice-warning">관리 주소에는 주최자 권한이 포함됩니다. 참여자에게 공유하지 마세요.</div>
-    </form>
+    <div class="stack">
+      <form class="panel stack" id="form">
+        <div><span class="eyebrow">Organizer</span><h2>모임 설정</h2><p class="panel-intro">변경 사항은 참여 화면과 결과 화면에 즉시 반영됩니다.</p></div>
+        <div class="field"><label>모임 이름</label><input class="input" id="title" maxlength="80" required></div>
+        <div class="field"><label>설명</label><textarea class="textarea" id="description" maxlength="500"></textarea></div>
+        <div class="field"><label>후보 기간</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input class="input" id="date_start" type="date" required><input class="input" id="date_end" type="date" required></div></div>
+        <div class="field"><label>예상 소요 시간</label><select class="select" id="duration"><option value="60">1시간</option><option value="90">1시간 30분</option><option value="120">2시간</option><option value="180">3시간</option><option value="240">4시간</option></select></div>
+        <div class="field"><label>최대 참여 인원</label><input class="input" id="participant_limit" type="number" min="2" max="100" required></div>
+        <div class="field"><label>응답 마감</label><input class="input" id="deadline" type="datetime-local"></div>
+        <div class="field"><label>응답 상태</label><select class="select" id="status"><option value="open">응답 받는 중</option><option value="closed">응답 마감</option></select></div>
+        <button class="button button-primary" id="save">변경 사항 저장</button>
+      </form>
+
+      <form class="panel stack" id="confirm-form">
+        <div><span class="eyebrow">Final decision</span><h2>최종 일정 확정</h2><p class="panel-intro">날짜와 장소를 확정하면 응답이 자동으로 마감되고 결과 화면 상단에 표시됩니다.</p></div>
+        <div class="notice notice-info hidden" id="confirmed-notice"></div>
+        <div class="field"><label>확정 날짜</label><input class="input" id="confirmed_date" type="date" required></div>
+        <div class="field"><label>확정 시간</label><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><input class="input" id="confirmed_start" type="time" required><input class="input" id="confirmed_end" type="time" required></div></div>
+        <div class="field"><label>장소 이름</label><input class="input" id="confirmed_place_name" maxlength="120" placeholder="예: 홍대입구역 8번 출구" required></div>
+        <div class="field"><label>상세 주소 또는 안내 <small>(선택)</small></label><input class="input" id="confirmed_place_address" maxlength="200" placeholder="예: 서울 마포구 양화로 160"></div>
+        <div class="button-row"><button class="button button-primary" id="confirm-button">최종 확정하기</button><button class="button button-secondary hidden" id="clear-confirm" type="button">확정 취소</button></div>
+      </form>
+    </div>
+
     <aside class="sidebar">
       <section class="panel stack">
         <h3>공유 링크</h3>
+        <button class="button button-primary" id="share_invite" type="button">참여자에게 공유</button>
         <button class="button button-secondary" id="copy_invite" type="button">초대 링크 복사</button>
         <button class="button button-secondary" id="copy_result" type="button">결과 링크 복사</button>
-        <a class="button button-primary" id="open_result" href="#">결과 화면 열기</a>
+        <a class="button button-ghost" id="open_result" href="#">결과 화면 열기</a>
       </section>
       <section class="panel">
         <h3>참여 현황</h3>
@@ -45,6 +58,7 @@
         <button class="button button-secondary button-small" id="csv" type="button" style="margin-top:14px">CSV 내보내기</button>
       </section>
       <section class="panel stack">
+        <div class="notice notice-warning">관리 권한은 이 브라우저에 저장됐습니다. 주소창에서는 토큰을 숨겼습니다.</div>
         <h3>위험 구역</h3>
         <p class="panel-intro">삭제한 모임과 응답은 복구할 수 없습니다.</p>
         <button class="button button-danger" id="delete_event" type="button">모임 삭제</button>
@@ -53,35 +67,47 @@
   </section>
 </main>
 <footer class="footer"><div class="container footer-inner"><span>© 2026 Lava Labs · TimeFit</span><div class="footer-links"><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a></div></div></footer>
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" aria-live="polite"></div>
 <script>
 const API='https://jnciddblcndmthmmvqrz.functions.supabase.co/timefit-public';
-const $=s=>document.querySelector(s);
-const code=new URLSearchParams(location.search).get('code')||'';
-const token=new URLSearchParams(location.hash.slice(1)).get('token')||'';
+const $=selector=>document.querySelector(selector);
+const params=new URLSearchParams(location.search);
+const code=params.get('code')||'';
+const tokenKey=`timefit:organizer:${code}`;
+const tokenFromHash=new URLSearchParams(location.hash.slice(1)).get('token')||'';
+if(tokenFromHash){localStorage.setItem(tokenKey,tokenFromHash);history.replaceState(null,'',`organizer.html?code=${encodeURIComponent(code)}`)}
+const token=tokenFromHash||localStorage.getItem(tokenKey)||'';
 let current=null;
 const invite=`${location.origin}/event.html?code=${encodeURIComponent(code)}`;
 const result=`${location.origin}/result.html?code=${encodeURIComponent(code)}`;
-const notify=m=>{const n=$('#toast');n.textContent=m;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),1800)};
+const notify=message=>{const node=$('#toast');node.textContent=message;node.classList.add('show');setTimeout(()=>node.classList.remove('show'),1900)};
+const addText=(parent,tag,text,className='')=>{const node=document.createElement(tag);node.textContent=text;if(className)node.className=className;parent.append(node);return node};
 const copy=async value=>{await navigator.clipboard.writeText(value);notify('링크를 복사했습니다.')};
 const localDate=value=>value?new Date(new Date(value).getTime()-new Date(value).getTimezoneOffset()*60000).toISOString().slice(0,16):'';
+const shortTime=value=>value?String(value).slice(0,5):'';
+function remember(event){let list=[];try{list=JSON.parse(localStorage.getItem('timefit:recent')||'[]')}catch{}list=list.filter(item=>item.code!==code);list.unshift({code,token,title:event.title,createdAt:event.created_at||new Date().toISOString()});localStorage.setItem('timefit:recent',JSON.stringify(list.slice(0,8)))}
+function renderPeople(people){const box=$('#people');box.innerHTML='';if(!people.length){addText(box,'div','아직 응답이 없습니다.','empty-state');return}people.forEach(person=>addText(box,'span',person.display_name,'person-chip'))}
+function renderHead(event,people){const head=$('#head');head.innerHTML='';addText(head,'span','Organizer','eyebrow');addText(head,'h1',event.title);addText(head,'p',`${people.length}명의 응답을 관리하고 최종 일정을 확정하세요.`);const meta=document.createElement('div');meta.className='meta-row';[event.status==='open'?'응답 받는 중':'응답 마감',`${event.date_start}–${event.date_end}`,`${event.meeting_duration_minutes||60}분 모임`].forEach(value=>addText(meta,'span',value,'meta-pill'));head.append(meta)}
+function renderConfirmed(event){const notice=$('#confirmed-notice'),clear=$('#clear-confirm');if(!event.confirmed_date){notice.classList.add('hidden');clear.classList.add('hidden');return}notice.textContent=`확정됨 · ${event.confirmed_date} ${shortTime(event.confirmed_start_time)}–${shortTime(event.confirmed_end_time)} · ${event.confirmed_place_name}`;notice.classList.remove('hidden');clear.classList.remove('hidden');$('#confirmed_date').value=event.confirmed_date;$('#confirmed_start').value=shortTime(event.confirmed_start_time);$('#confirmed_end').value=shortTime(event.confirmed_end_time);$('#confirmed_place_name').value=event.confirmed_place_name||'';$('#confirmed_place_address').value=event.confirmed_place_address||''}
 async function load(){
-  if(!code||!token){$('#head').textContent='올바른 관리 링크가 아닙니다.';return}
+  if(!code||!token){$('#head').textContent='이 브라우저에 저장된 관리 권한이 없습니다.';return}
   try{
-    const r=await fetch(`${API}?action=manage&code=${encodeURIComponent(code)}&token=${encodeURIComponent(token)}`);
-    const data=await r.json();if(!r.ok||!data.event)throw new Error(data.error||'LOAD_FAILED');
-    current=data;const e=data.event,p=data.participants||[];
-    $('#head').innerHTML=`<span class="eyebrow">Organizer</span><h1>${e.title}</h1><p>${p.length}명의 응답을 관리하고 최신 결과를 확인하세요.</p>`;
-    $('#title').value=e.title||'';$('#description').value=e.description||'';$('#date_start').value=e.date_start||'';$('#date_end').value=e.date_end||'';$('#duration').value=String(e.meeting_duration_minutes||60);$('#participant_limit').value=e.participant_limit||30;$('#deadline').value=localDate(e.deadline);$('#status').value=e.status||'open';
-    $('#summary').textContent=`${p.length}명 응답 · 최대 ${e.participant_limit||30}명`;
-    $('#people').innerHTML=p.length?p.map(x=>`<span class="person-chip">${x.display_name}</span>`).join(''):'<div class="empty-state">아직 응답이 없습니다.</div>';
+    const response=await fetch(`${API}?action=manage&code=${encodeURIComponent(code)}&token=${encodeURIComponent(token)}`);
+    const data=await response.json();if(!response.ok||!data.event)throw new Error(data.error||'LOAD_FAILED');
+    current=data;const event=data.event,people=data.participants||[];remember(event);renderHead(event,people);renderPeople(people);renderConfirmed(event);
+    $('#title').value=event.title||'';$('#description').value=event.description||'';$('#date_start').value=event.date_start||'';$('#date_end').value=event.date_end||'';$('#duration').value=String(event.meeting_duration_minutes||60);$('#participant_limit').value=event.participant_limit||30;$('#deadline').value=localDate(event.deadline);$('#status').value=event.status||'open';
+    $('#confirmed_date').min=event.date_start;$('#confirmed_date').max=event.date_end;if(!$('#confirmed_date').value)$('#confirmed_date').value=event.date_start;
+    $('#summary').textContent=`${people.length}명 응답 · 최대 ${event.participant_limit||30}명`;
     $('#open_result').href=result;$('#body').classList.remove('hidden');
   }catch{$('#head').textContent='관리 권한을 확인할 수 없습니다.'}
 }
 $('#copy_invite').onclick=()=>copy(invite);$('#copy_result').onclick=()=>copy(result);
-$('#form').onsubmit=async e=>{e.preventDefault();const b=$('#save');b.disabled=true;b.textContent='저장 중…';try{const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'update_event',code,organizer_token:token,title:$('#title').value,description:$('#description').value,date_start:$('#date_start').value,date_end:$('#date_end').value,duration:$('#duration').value,participant_limit:$('#participant_limit').value,deadline:$('#deadline').value,status:$('#status').value,require_location:true})});const d=await r.json();if(!r.ok||!d.ok)throw 0;notify('변경 사항을 저장했습니다.');load()}catch{alert('저장하지 못했습니다. 입력 내용을 확인해 주세요.')}finally{b.disabled=false;b.textContent='변경 사항 저장'}};
-$('#delete_event').onclick=async()=>{if(!confirm('모임과 모든 응답을 삭제할까요?'))return;const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'delete_event',code,organizer_token:token})});if(r.ok){alert('모임을 삭제했습니다.');location.href='index.html'}else alert('삭제하지 못했습니다.')};
-$('#csv').onclick=()=>{if(!current)return;const rows=[['이름','가능 시간','출발 위치'],...(current.participants||[]).map(p=>[p.display_name,(p.availability||[]).map(x=>`${x.date} ${x.start}-${x.end}`).join(' / '),p.address||''])];const csv='\ufeff'+rows.map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(',')).join('\n');const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download=`timefit-${code}.csv`;a.click();URL.revokeObjectURL(a.href)};
+$('#share_invite').onclick=async()=>{if(navigator.share){try{await navigator.share({title:current?.event?.title||'TimeFit 모임',text:'가능한 시간과 출발 위치를 입력해 주세요.',url:invite})}catch{}}else copy(invite)};
+$('#form').onsubmit=async event=>{event.preventDefault();const button=$('#save');button.disabled=true;button.textContent='저장 중…';try{const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'update_event',code,organizer_token:token,title:$('#title').value,description:$('#description').value,date_start:$('#date_start').value,date_end:$('#date_end').value,duration:$('#duration').value,participant_limit:$('#participant_limit').value,deadline:$('#deadline').value,status:$('#status').value,require_location:true})});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'SAVE_FAILED');notify('변경 사항을 저장했습니다.');await load()}catch{alert('저장하지 못했습니다. 입력 내용을 확인해 주세요.')}finally{button.disabled=false;button.textContent='변경 사항 저장'}};
+$('#confirm-form').onsubmit=async event=>{event.preventDefault();const start=$('#confirmed_start').value,end=$('#confirmed_end').value,duration=Number($('#duration').value),toMinutes=value=>{const[a,b]=value.split(':').map(Number);return a*60+b};if(toMinutes(end)-toMinutes(start)<duration){alert(`확정 시간은 최소 ${duration}분 이상이어야 합니다.`);return}const button=$('#confirm-button');button.disabled=true;button.textContent='확정 중…';try{const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'confirm_event',code,organizer_token:token,confirmed_date:$('#confirmed_date').value,start_time:start,end_time:end,place_name:$('#confirmed_place_name').value,place_address:$('#confirmed_place_address').value})});const data=await response.json();if(!response.ok||!data.ok)throw new Error(data.error||'CONFIRM_FAILED');notify('최종 일정을 확정했습니다.');await load()}catch(error){alert(error.message==='INVALID_CONFIRMED_DURATION'?'확정 시간이 모임 소요 시간보다 짧습니다.':'최종 일정을 확정하지 못했습니다.')}finally{button.disabled=false;button.textContent='최종 확정하기'}};
+$('#clear-confirm').onclick=async()=>{if(!confirm('최종 확정을 취소하고 응답을 다시 받을까요?'))return;const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'confirm_event',code,organizer_token:token,confirmed_date:null})});const data=await response.json();if(response.ok&&data.ok){notify('확정을 취소했습니다.');await load()}else alert('확정을 취소하지 못했습니다.')};
+$('#delete_event').onclick=async()=>{if(!confirm('모임과 모든 응답을 삭제할까요?'))return;const response=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'delete_event',code,organizer_token:token})});if(response.ok){localStorage.removeItem(tokenKey);let list=[];try{list=JSON.parse(localStorage.getItem('timefit:recent')||'[]')}catch{}localStorage.setItem('timefit:recent',JSON.stringify(list.filter(item=>item.code!==code)));alert('모임을 삭제했습니다.');location.href='index.html'}else alert('삭제하지 못했습니다.')};
+$('#csv').onclick=()=>{if(!current)return;const rows=[['이름','가능 시간','출발 위치'],...(current.participants||[]).map(person=>[person.display_name,(person.availability||[]).map(slot=>`${slot.date} ${slot.start}-${slot.end}`).join(' / '),person.address||''])];const csv='\ufeff'+rows.map(row=>row.map(value=>`"${String(value).replaceAll('"','""')}"`).join(',')).join('\n');const link=document.createElement('a');link.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));link.download=`timefit-${code}.csv`;link.click();URL.revokeObjectURL(link.href)};
 load();
 </script>
 </body>
