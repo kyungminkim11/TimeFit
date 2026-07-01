@@ -8,11 +8,11 @@
   <link rel="stylesheet" href="css/v2.css">
   <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9dd3396dc9afd1f1fe1b0cc2bbc42096&libraries=services"></script>
 </head>
-<body>
+<body class="has-mobile-action">
 <header class="site-header">
   <nav class="container nav">
     <a class="brand" href="index.html"><span class="brand-mark">T</span>TimeFit</a>
-    <div class="nav-links"><a class="button button-primary button-small keep-mobile" id="top-result" href="#">결과 보기</a></div>
+    <div class="nav-links"><a class="button button-secondary button-small keep-mobile" id="top-result" href="#">현재 결과</a></div>
   </nav>
 </header>
 <main>
@@ -25,43 +25,47 @@
       <input type="hidden" id="address">
       <input type="hidden" id="edit-token">
       <div>
-        <span class="eyebrow">Your response</span>
+        <div class="step-strip" aria-label="응답 단계"><span class="active">1. 이름</span><span>2. 가능한 시간</span><span>3. 출발 위치</span></div>
+        <span class="eyebrow">참여 응답</span>
         <h2 id="form-title">가능한 시간을 알려주세요.</h2>
-        <p class="panel-intro">시간대는 여러 개 추가할 수 있으며 같은 기기에서 다시 수정할 수 있습니다.</p>
+        <p class="panel-intro">가능한 시간을 여러 개 입력해 주세요. 같은 기기에서는 제출 후에도 수정할 수 있습니다.</p>
       </div>
       <div class="field">
         <label for="display-name">이름 또는 별명</label>
-        <input class="input" id="display-name" maxlength="40" required>
+        <input class="input" id="display-name" maxlength="40" placeholder="다른 참여자가 알아볼 이름" autocomplete="name" required>
       </div>
       <div class="field">
         <label>가능한 시간</label>
+        <p class="form-note">실제로 약속이 가능한 시작·종료 시간을 입력하세요.</p>
         <div class="availability-list" id="slots"></div>
-        <button class="button button-ghost button-small" id="add-slot" type="button">+ 시간대 추가</button>
+        <button class="button button-ghost button-small" id="add-slot" type="button">시간대 추가</button>
       </div>
       <div class="field">
-        <label>출발 위치</label>
+        <label for="location-query">출발 위치</label>
+        <p class="form-note">집 주소 대신 가까운 역이나 동네 중심을 권장합니다.</p>
         <div class="location-tools">
-          <input class="input" id="location-query" placeholder="주소, 역, 장소 검색">
+          <input class="input" id="location-query" placeholder="예: 일산역, 홍대입구역" autocomplete="off">
           <button class="button button-secondary button-small" id="search-location" type="button">검색</button>
           <button class="button button-secondary button-small" id="current-location" type="button">현재 위치</button>
         </div>
         <div class="map-shell"><div class="map" id="response-map"></div></div>
-        <div class="selected-location" id="selected-location">지도에서 출발 위치를 선택해 주세요.</div>
+        <div class="selected-location" id="selected-location">검색하거나 지도를 눌러 출발 위치를 선택하세요.</div>
       </div>
-      <div class="notice notice-info">정확한 집 주소 대신 가까운 역이나 동네 중심을 입력해도 충분합니다.</div>
+      <div class="notice notice-info">공개 결과 화면에는 상세 주소를 숨기고 위치 정밀도를 낮춰 표시합니다.</div>
       <div class="button-row">
         <button class="button button-primary" id="submit-button">응답 제출하기</button>
         <button class="button button-danger hidden" id="delete-response" type="button">내 응답 삭제</button>
       </div>
     </form>
     <aside class="sidebar">
-      <section class="panel"><h3>참여 현황</h3><p class="panel-intro" id="summary"></p><div class="participant-list" id="people"></div></section>
-      <section class="panel stack"><h3>공유</h3><button class="button button-secondary" id="copy-link" type="button">초대 링크 복사</button><a class="button button-primary" id="result-link" href="#">현재 결과 보기</a></section>
+      <section class="panel"><span class="eyebrow">참여 현황</span><h3>누가 응답했나요?</h3><p class="panel-intro" id="summary"></p><div class="participant-list" id="people"></div></section>
+      <section class="panel stack"><span class="eyebrow">공유</span><h3>다른 사람 초대하기</h3><button class="button button-secondary" id="copy-link" type="button">초대 링크 복사</button><a class="button button-primary" id="result-link" href="#">현재 결과 보기</a></section>
     </aside>
   </section>
 </main>
 <footer class="footer"><div class="container footer-inner"><span>© 2026 Lava Labs · TimeFit</span><div class="footer-links"><a href="privacy.html">개인정보처리방침</a><a href="terms.html">이용약관</a></div></div></footer>
-<div class="toast" id="toast"></div>
+<div class="mobile-action" id="mobile-action"><a class="button button-secondary" id="mobile-result" href="#">결과 보기</a><button class="button button-primary" id="mobile-submit" type="submit" form="response-form">응답 제출</button></div>
+<div class="toast" id="toast" aria-live="polite"></div>
 <script type="module" src="js/v3-availability.js"></script>
 </body>
 </html>
